@@ -45,7 +45,7 @@ public class StudentController {
     /**
      * 修改
      */
-    @GetMapping("/update")
+    @PostMapping("/update")
     public Result update(@RequestBody Student student) {
         return ResultResponse.success(iStudentService.updateById(student));
     }
@@ -58,6 +58,11 @@ public class StudentController {
         return ResultResponse.success(iStudentService.removeById(id));
     }
 
+    /**
+     * 添加
+     * @param student
+     * @return
+     */
     @PostMapping("/add")
     public Result add(@RequestBody Student student) {
         iStudentService.save(student);

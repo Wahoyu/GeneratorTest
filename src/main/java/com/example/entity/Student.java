@@ -36,11 +36,11 @@ public class Student implements Serializable {
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss" , timezone = "GMT+8")
     @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createdTime;
+    private LocalDateTime createTime;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss" , timezone = "GMT+8")
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime updatedTime;
+    private LocalDateTime updateTime;
 
 
 }

@@ -26,13 +26,19 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
     StudentMapper studentMapper;
 
     @Override
-    public Page<Student> selectPage(Student student, Page<Student> page) {
+    public Page<Student> selectByPage(Student student, Page<Student> page) {
 
         //进行必要的判空操作和模糊查询,主要是name等字段,自行判断,可后续添加
         QueryWrapper<Student> queryWrapper = new QueryWrapper<>();
+
         if (StringUtils.isNotBlank(student.getName())) {
-            queryWrapper.like("student_name")
+            queryWrapper.like("name", student.getName());
         }
-        return null;
+
+        if (student.getAge() != null) {
+            queryWrapper.eq("age", student.getAge());
+        }
+        Page<Student> studentPage = studentMapper.selectPage(page, queryWrapper);
+        return studentPage;
     }
 }
